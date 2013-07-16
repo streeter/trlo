@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import webbrowser
 from requests_oauthlib import OAuth1Session
 
 OAUTH_REQUEST_TOKEN_URL = 'https://trello.com/1/OAuthGetRequestToken'
@@ -41,6 +42,7 @@ def authorize():
         name='trlo.py', expiration='never', scope='read,write')
     print("Please visit the following URL to authorize this app:")
     print(authorization_url)
+    webbrowser.open(authorization_url)
     print('')
     print("Once you've authorized, copy and paste the token Trello gives you below.")
     verifier = raw_input("Trello's token: ").strip()
